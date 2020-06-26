@@ -1,5 +1,6 @@
 import React from 'react';
 import MemoInput from './MemoInput.js';
+import {Link} from 'react-router-dom';
 
 class Login extends React.Component{
 
@@ -77,7 +78,9 @@ class Login extends React.Component{
                         <label htmlFor='password' id='plabel'>Password:</label> 
                         <input type='password' id='password' name='password' value={this.state.password} onChange={this.handlePasswordChange}/>
                         <MemoInput onMemoChange={this.handleMemoChange} mode={this.state.mode} value={this.state.memo}/>
-                        <input type='submit' value={this.state.mode === 'login' ? 'Log In' : 'Sign Up'}/>
+                        <Link to={`/${this.state.username}`}>
+                            <input type='submit' value={this.state.mode === 'login' ? 'Log In' : 'Sign Up'}/>
+                        </Link>
                     </form>
                 </div> 
             </div>

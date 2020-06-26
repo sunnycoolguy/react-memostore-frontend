@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './Login.js';
 import './index.css';
+import MemoStore from './MemoStore.js'
 
 
-ReactDOM.render(<Login/>, document.getElementById('root'));
+ReactDOM.render(<MemoStore/>, document.getElementById('root'));
