@@ -76,9 +76,9 @@ class Login extends React.Component{
                     </div>
                     <form onSubmit={this.handleSubmit}>
                         <label htmlFor='username'/>Username:<label/>
-                        <input type='text' id='username' name='username' value={this.state.username} onChange={this.handleUsernameChange}/>
+                        <input required type='text' id='username' name='username' value={this.state.username} onChange={this.handleUsernameChange}/>
                         <label htmlFor='password' id='plabel'>Password:</label> 
-                        <input type='password' id='password' name='password' value={this.state.password} onChange={this.handlePasswordChange}/>
+                        <input required type='password' id='password' name='password' value={this.state.password} onChange={this.handlePasswordChange}/>
                         <MemoInput onMemoChange={this.handleMemoChange} mode={this.state.mode} value={this.state.memo}/>
                         <input type='submit' value={this.state.mode === 'login' ? 'Log In' : 'Sign Up'}/>
                     </form>
