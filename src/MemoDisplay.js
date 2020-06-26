@@ -10,12 +10,23 @@ class MemoDisplay extends React.Component {
 
 
     render(){
-        return <div>{this.state.memo}</div>;
+        return (
+            <div className='container'>
+                <div className='memo-box'>
+                    <h1>Here's your memo:  {console.log(this.props.match.password)}</h1>
+                    <div className='memo'>{this.state.memo}</div>
+                </div>
+            </div>
+        );
     }
     
     componentDidMount(){
-        fetch(`http://localhost:4001/${this.props.match.params.username}`)
-        .then(res => res.json)
+        fetch(`http://localhost:4001/${this.props.match.params.username}`, {
+            method : 'POST',
+            headers: {'Content-type' : 'application/json'},
+            body: JSON.stringify({password : this.props.location.state.password})
+        })
+        .then(res => res.json())
         .then(
             (result) => {
                 this.setState(
@@ -23,6 +34,7 @@ class MemoDisplay extends React.Component {
                         memo : result.memo
                     }
                 );
+                console.log(result.memo);
             },
             (error) => {
                 this.setState(
