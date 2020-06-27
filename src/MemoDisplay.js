@@ -31,7 +31,7 @@ class MemoDisplay extends React.Component {
         .then(
             (result) => {
                 //Handle edge case where user tries to create an account with preexisting username and correctly guessed password.
-                if(this.props.location.containsMemo){
+                if(this.props.location.state.containsMemo){
                     this.setState({memo : 'That username is already taken.'});
                 } else {
                     this.setState(

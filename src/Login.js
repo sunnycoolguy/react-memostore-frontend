@@ -71,7 +71,7 @@ class Login extends React.Component{
         {
             password: this.state.password,
             mode : this.state.mode,
-            containsMemo : this.state.memo.length ? true : false
+            containsMemo : this.state.memo ? true : false
         });
     }
 
