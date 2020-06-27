@@ -32,7 +32,8 @@ class MemoDisplay extends React.Component {
             (result) => {
                 this.setState(
                     {
-                        memo : result.memo
+                        memo : result.memo,
+                        isLoaded: true,
                     }
                 );
                 console.log(result.memo);
