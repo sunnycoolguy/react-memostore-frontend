@@ -60,9 +60,10 @@ class Login extends React.Component{
             .then(console.log('Successful response!'));
         }
         this.props.history.push(`/${this.state.username}`,
-            {
-                password: this.state.password
-            });
+        {
+            password: this.state.password,
+            mode : this.state.mode
+        });
     }
 
     render(){

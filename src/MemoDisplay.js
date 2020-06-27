@@ -4,7 +4,8 @@ class MemoDisplay extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            memo : 'Loading...'
+            memo : 'Loading...',
+            isLoaded: false
         }
     }
 
@@ -13,7 +14,7 @@ class MemoDisplay extends React.Component {
         return (
             <div className='container'>
                 <div className='memo-box'>
-                    <h1>Here's your memo:  {console.log(this.props.match.password)}</h1>
+                    <h1 style={{display : this.state.isLoaded ? 'block' : 'none'}}>Here's your memo:  {console.log(this.props.match.password)}</h1>
                     <div className='memo'>{this.state.memo}</div>
                 </div>
             </div>
@@ -37,11 +38,15 @@ class MemoDisplay extends React.Component {
                 console.log(result.memo);
             },
             (error) => {
-                this.setState(
-                    {
-                        memo: 'There was an error loading your memo. Please try again with a proper account.'
-                    }
-                );
+                if(this.props.location.state.mode === 'login'){
+                    this.setState(
+                        {
+                            memo: 'There was an error loading your memo. Please try again with a proper username & password.'
+                        }
+                    );
+                } else {
+                    this.setState({memo : 'That username is already taken'});
+                }
             }
         );
     }   
