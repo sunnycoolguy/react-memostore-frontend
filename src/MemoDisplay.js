@@ -30,13 +30,17 @@ class MemoDisplay extends React.Component {
         .then(res => res.json())
         .then(
             (result) => {
-                this.setState(
-                    {
-                        memo : result.memo,
-                        isLoaded: true,
-                    }
-                );
-                console.log(result.memo);
+                //Handle edge case where user tries to create an account with preexisting username and correctly guessed password.
+                if(this.props.location.containsMemo){
+                    this.setState({memo : 'That username is already taken.'});
+                } else {
+                    this.setState(
+                        {
+                            memo : result.memo,
+                            isLoaded: true,
+                        }
+                    );
+                }
             },
             (error) => {
                 if(this.props.location.state.mode === 'login'){
@@ -45,7 +49,7 @@ class MemoDisplay extends React.Component {
                             memo: 'There was an error loading your memo. Please try again with a proper username & password.'
                         }
                     );
-                } else {
+                } else { //Handle case where user tries to create an account with a preexisting username.
                     this.setState({memo : 'That username is already taken'});
                 }
             }

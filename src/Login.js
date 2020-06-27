@@ -39,13 +39,21 @@ class Login extends React.Component{
     }
 
     handleLoginClick(event){
-        this.setState({mode: 'login'});
-        console.log('login clicked');
+        this.setState({
+            mode: 'login',
+            username : '',
+            password: '',
+            memo : ''
+        });
     }
 
     handleSignUpClick(event){
-        this.setState({mode:'sign-up'});
-        console.log('sign-up clicked');
+        this.setState({
+            mode:'sign-up',
+            username : '',
+            password: '',
+            memo : ''
+        });
     }
 
     handleSubmit(event){
@@ -62,7 +70,8 @@ class Login extends React.Component{
         this.props.history.push(`/${this.state.username}`,
         {
             password: this.state.password,
-            mode : this.state.mode
+            mode : this.state.mode,
+            containsMemo : this.state.memo.length ? true : false
         });
     }
 
